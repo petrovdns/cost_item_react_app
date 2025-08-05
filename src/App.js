@@ -1,8 +1,8 @@
+import { useState } from "react";
 import NewCost from "./components/NewCost/NewCost";
 import CostsItemList from "./components/costs/CostsItemList";
 
-function App() {
-  const costs = [
+const INIT_COSTS = [
     {
       date: new Date(2025, 12, 4),
       description: "Frigider",
@@ -20,8 +20,12 @@ function App() {
     },
   ];
 
+function App() {
+  
+  const [costs, setCosts] = useState(INIT_COSTS);
+
   const addCostHandler = (cost) => {
-        console.log(cost);
+        setCosts([cost, ...costs]);
   };
 
   return (

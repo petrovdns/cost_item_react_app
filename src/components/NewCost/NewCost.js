@@ -5,8 +5,7 @@ function NewCost(props) {
 
     const onSaveForm = (inputCostData) => {
         const costData = {
-            ...inputCostData,
-            id: Math.random().toString()
+            ...inputCostData
         }
 
         props.onAddCost(costData);

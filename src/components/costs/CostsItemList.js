@@ -12,7 +12,6 @@ function CostsItemList(props) {
   };
 
   return (
-    <div>
       <Card className="costs-list">
         <CostsFilter year={selectedYear} onChangeYear={yearChangeHandler} />
         {props.costs.map((object, index) => (
@@ -24,7 +23,6 @@ function CostsItemList(props) {
           />
         ))}
       </Card>
-    </div>
   );
 }
 

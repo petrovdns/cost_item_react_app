@@ -3,7 +3,7 @@ import "./CostForm.css"
 
 function CostForm(props) {
 
-  const [name, setName] = useState('');
+  const [description, setDescription] = useState('');
   const [amount, setAmount] = useState('');
   const [date, setDate] = useState('');
 
@@ -13,8 +13,8 @@ function CostForm(props) {
   //   date: ""
   // });
 
-  const nameChangeHandler = (e) => {
-    setName(e.target.value);
+  const descriptionChangeHandler = (e) => {
+    setDescription(e.target.value);
 
     // setUserInput({
     //   ...userInput,
@@ -49,14 +49,14 @@ function CostForm(props) {
     e.preventDefault();
 
     const costData = {
-      name: name,
+      description: description,
       amount: amount,
       date: new Date(date)
     }
 
     props.onSaveForm(costData);
 
-    setName('');
+    setDescription('');
     setAmount('');
     setDate('');
   };
@@ -66,7 +66,7 @@ function CostForm(props) {
       <div className="new-cost__controls">
         <div className="new-cost__control">
             <label>Nume</label>
-            <input type="text" onChange={nameChangeHandler} value={name}/>
+            <input type="text" onChange={descriptionChangeHandler} value={description}/>
         </div>
         <div className="new-cost__control">
             <label>Suma</label>
