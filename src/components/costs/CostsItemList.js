@@ -5,23 +5,31 @@ import CostsFilter from "./CostsFilter";
 import { useState } from "react";
 
 function CostsItemList(props) {
-  const [selectedYear, setSelectedYear] = useState("2024");
+  const [selectedYear, setSelectedYear] = useState("2025");
 
   const yearChangeHandler = (year) => {
     setSelectedYear(year);
   };
 
-  return (
-      <Card className="costs-list">
-        <CostsFilter year={selectedYear} onChangeYear={yearChangeHandler} />
-        {props.costs.map((object, index) => (
+  const filteredListItem = props.costs.filter(object => object.date.getFullYear().toString() === selectedYear);
+
+  let costsContent = <p>No purchase in the year</p>
+
+  if(filteredListItem.length > 0) {
+    costsContent = filteredListItem.map((object) => (
           <CostItem
-            key={index}
+            key={object.id}
             date={object.date}
             description={object.description}
             amount={object.amount}
           />
-        ))}
+        ));
+  };
+
+  return (
+      <Card className="costs-list">
+        <CostsFilter year={selectedYear} onChangeYear={yearChangeHandler} />
+        {costsContent}
       </Card>
   );
 }
