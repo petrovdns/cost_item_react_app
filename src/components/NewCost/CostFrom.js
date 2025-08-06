@@ -78,6 +78,7 @@ function CostForm(props) {
         </div>
         <div className="new-cost__control">
             <button type="submit">Adauga Item</button>
+            <button type="button" onClick={props.onIsFormVisible}>Refuza</button>
         </div>
       </div>
     </form>
